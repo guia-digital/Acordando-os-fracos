@@ -11,134 +11,92 @@
       --accent-color: #1a1a1a;
       --text-color: #f2f2f2;
       --highlight: #2a2a2a;
-    }body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Poppins', sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  overflow-x: hidden;
-}
-
-.background-decor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at top left, #1f1f1f, #0f0f0f);
-  z-index: -1;
-}
-
-.container {
-  max-width: 600px;
-  margin: 80px auto;
-  padding: 20px;
-  text-align: center;
-}
-
-.question {
-  display: none;
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-.question.active {
-  display: block;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.question-title {
-  font-size: 1.5rem;
-  margin-bottom: 30px;
-}
-
-.btn {
-  background-color: var(--accent-color);
-  border: 2px solid transparent;
-  color: var(--text-color);
-  padding: 15px;
-  margin: 10px 0;
-  border-radius: 10px;
-  cursor: pointer;
-  width: 100%;
-  font-size: 1rem;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background-color: var(--highlight);
-  border-color: var(--primary-color);
-}
-
-.final {
-  display: none;
-  font-size: 1.2rem;
-  padding: 40px 20px;
-}
-
+      --progress-bg: #2a2a2a;
+      --progress-fill: #ff4500;
+    }
+    body { margin: 0; padding: 0; font-family: 'Poppins', sans-serif; background-color: var(--bg-color); color: var(--text-color); overflow-x: hidden; }
+    .background-decor { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at top left, #1f1f1f, #0f0f0f); z-index: -1; }
+    .container { max-width: 600px; margin: 80px auto; padding: 20px; text-align: center; }
+    .progress-bar { width: 100%; background: var(--progress-bg); border-radius: 5px; overflow: hidden; height: 8px; margin-bottom: 20px; }
+    .progress-fill { width: 0%; height: 100%; background: var(--progress-fill); transition: width 0.4s ease; }
+    .question { display: none; animation: fadeIn 0.5s ease-in-out; }
+    .question.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .question-title { font-size: 1.5rem; margin-bottom: 30px; }
+    .btn { background-color: var(--accent-color); border: 2px solid transparent; color: var(--text-color); padding: 15px; margin: 10px 0; border-radius: 10px; cursor: pointer; width: 100%; font-size: 1rem; transition: background 0.2s, transform 0.1s; }
+    .btn:hover { background-color: var(--highlight); border-color: var(--primary-color); }
+    .btn:active { transform: translateY(2px); }
+    .final { display: none; font-size: 1.2rem; padding: 40px 20px; }
   </style>
 </head>
 <body>
   <div class="background-decor"></div>
   <div class="container">
+    <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
     <div class="intro">
-      <h1 style="color: var(--primary-color); font-size: 2rem; margin-bottom: 20px;">Tem algo dentro de você que está te travando.</h1>
+      <h1 style="color: var(--primary-color); font-size: 2rem; margin-bottom: 20px;">Você tá se sabotando. E sabe disso.</h1>
       <p style="line-height: 1.6; font-size: 1.1rem;">
-        Pensamentos acelerados, medo de falhar, sensação de vazio, procrastinação.<br>
-        Isso não é preguiça. É um ciclo invisível. E ele precisa ser quebrado.<br><br>
-        Responda esse breve quiz. Ele vai te mostrar algo que você nunca viu — mas sempre sentiu.
+        Você tá cansado. Travado. Perdido.<br><br>
+        Rola a timeline, mas a cabeça continua uma zona.<br>
+        Você finge que tá tudo bem, mas sabe que não tá.<br><br>
+        Esse quiz vai te jogar contra a parede. Vai te mostrar por que sua vida parou.
       </p>
-    </div><div class="question active" id="q1">
-  <div class="question-title">1. Quando você tenta mudar, o que normalmente acontece?</div>
-  <button class="btn" onclick="next(1)">Eu travo. Parece que algo me puxa pra trás.</button>
-  <button class="btn" onclick="next(1)">Começo animado e depois paro sem motivo.</button>
-  <button class="btn" onclick="next(1)">Fico com medo de dar errado.</button>
-</div>
+    </div>
 
-<div class="question" id="q2">
-  <div class="question-title">2. Como você se sente quando está sozinho?</div>
-  <button class="btn" onclick="next(2)">Minha mente não para, fico exausto.</button>
-  <button class="btn" onclick="next(2)">Me sinto vazio(a), como se faltasse algo.</button>
-  <button class="btn" onclick="next(2)">Fico ansioso(a) sem explicação.</button>
-</div>
+    <div class="question active" id="q1">
+      <div class="question-title">1. Quando tenta mudar, o que acontece de verdade?</div>
+      <button class="btn" onclick="next(1, this.innerText)">Eu me saboto. Faço tudo pra voltar pra zona de conforto.</button>
+      <button class="btn" onclick="next(1, this.innerText)">Eu começo e invento mil desculpas pra parar.</button>
+      <button class="btn" onclick="next(1, this.innerText)">Eu fujo. Finjo que ainda não é a hora.</button>
+    </div>
 
-<div class="question" id="q3">
-  <div class="question-title">3. Você sente que sua mente te sabota?</div>
-  <button class="btn" onclick="next(3)">Sim. Toda vez que tento algo, ela atrapalha.</button>
-  <button class="btn" onclick="next(3)">Sim. Ela cria desculpas, medos e dúvidas.</button>
-  <button class="btn" onclick="next(3)">Sim. Parece que fui programado pra falhar.</button>
-</div>
+    <div class="question" id="q2">
+      <div class="question-title">2. Quando tá sozinho, o que rola na sua mente?</div>
+      <button class="btn" onclick="next(2, this.innerText)">Um turbilhão de merda que eu tento calar com redes sociais.</button>
+      <button class="btn" onclick="next(2, this.innerText)">Sinto um vazio que nem sei explicar.</button>
+      <button class="btn" onclick="next(2, this.innerText)">Fico ansioso, como se estivesse atrasado pra algo que nem existe.</button>
+    </div>
 
-<div class="question" id="q4">
-  <div class="question-title">4. O que você mais quer agora?</div>
-  <button class="btn" onclick="next(4)">Silenciar a mente.</button>
-  <button class="btn" onclick="next(4)">Parar de sabotar tudo.</button>
-  <button class="btn" onclick="next(4)">Desbloquear meu verdadeiro eu.</button>
-</div>
+    <div class="question" id="q3">
+      <div class="question-title">3. Sua mente é uma aliada ou um inimigo?</div>
+      <button class="btn" onclick="next(3, this.innerText)">Inimigo total. Me trava toda vez que quero evoluir.</button>
+      <button class="btn" onclick="next(3, this.innerText)">Ela me sabota sorrindo. Me convence que tá tudo bem em ficar na merda.</button>
+      <button class="btn" onclick="next(3, this.innerText)">É como se eu tivesse sido programado pra fracassar.</button>
+    </div>
 
-<div class="final" id="final">
-  Analisando suas respostas...
-  <br><br>
-  <strong>Você precisa ver isso antes que sua mente te sabote de novo.</strong>
-  <br><br>
-  <a href="https://seulink.aqui" style="background-color: var(--primary-color); color: #000; padding: 15px 30px; text-decoration: none; font-weight: bold; border-radius: 10px; display: inline-block;">CLIQUE AQUI AGORA</a>
-</div>
+    <div class="question" id="q4">
+      <div class="question-title">4. O que você mais quer agora, mas não consegue alcançar?</div>
+      <button class="btn" onclick="next(4, this.innerText)">Silenciar essa porra de mente acelerada.</button>
+      <button class="btn" onclick="next(4, this.innerText)">Parar de repetir sempre os mesmos erros.</button>
+      <button class="btn" onclick="next(4, this.innerText)">Sair desse ciclo de autossabotagem antes que vire minha identidade.</button>
+    </div>
 
-  </div>  <script>
+    <div class="final" id="final">
+      <p>Tá claro: você tá preso. E vai continuar assim se não fizer algo radical.</p>
+      <p><strong>Marcos, 28 anos, também achava que era só preguiça. Quando viu isso aqui, quase fechou a aba. Ainda bem que não fechou. Em 21 dias, tava no controle de novo.</strong></p>
+      <p><strong>Esse método já quebrou a rotina de merda de centenas de pessoas.</strong></p>
+      <p><em>Essa página pode sair do ar a qualquer momento se o criador do método encerrar as inscrições. Decide agora ou aceita viver de replay mental.</em></p>
+      <a href="https://seulink.aqui" id="cta" style="background-color: var(--primary-color); color: #000; padding: 15px 30px; text-decoration: none; font-weight: bold; border-radius: 10px; display: inline-block; margin-top: 20px;">Me dá essa porra antes que eu desista de novo</a>
+    </div>
+  </div>
+
+  <script>
     let current = 1;
     const total = 4;
 
-    function next(n) {
+    function next(n, resposta) {
+      console.log(`Pergunta ${n}: ${resposta}`);
       document.getElementById(`q${n}`).classList.remove('active');
+      const fill = document.getElementById('progress');
+      fill.style.width = `${(n / total) * 100}%`;
       if (n < total) {
         document.getElementById(`q${n + 1}`).classList.add('active');
       } else {
         document.getElementById('final').style.display = 'block';
+        fill.style.width = '100%';
+        console.log("Usuário chegou ao final.");
       }
     }
-  </script></body>
+  </script>
+</body>
 </html>
