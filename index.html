@@ -1,0 +1,144 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Desbloqueie sua mente</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #ff4500;
+      --bg-color: #0f0f0f;
+      --accent-color: #1a1a1a;
+      --text-color: #f2f2f2;
+      --highlight: #2a2a2a;
+    }body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  overflow-x: hidden;
+}
+
+.background-decor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top left, #1f1f1f, #0f0f0f);
+  z-index: -1;
+}
+
+.container {
+  max-width: 600px;
+  margin: 80px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.question {
+  display: none;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.question.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.question-title {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+}
+
+.btn {
+  background-color: var(--accent-color);
+  border: 2px solid transparent;
+  color: var(--text-color);
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: var(--highlight);
+  border-color: var(--primary-color);
+}
+
+.final {
+  display: none;
+  font-size: 1.2rem;
+  padding: 40px 20px;
+}
+
+  </style>
+</head>
+<body>
+  <div class="background-decor"></div>
+  <div class="container">
+    <div class="intro">
+      <h1 style="color: var(--primary-color); font-size: 2rem; margin-bottom: 20px;">Tem algo dentro de você que está te travando.</h1>
+      <p style="line-height: 1.6; font-size: 1.1rem;">
+        Pensamentos acelerados, medo de falhar, sensação de vazio, procrastinação.<br>
+        Isso não é preguiça. É um ciclo invisível. E ele precisa ser quebrado.<br><br>
+        Responda esse breve quiz. Ele vai te mostrar algo que você nunca viu — mas sempre sentiu.
+      </p>
+    </div><div class="question active" id="q1">
+  <div class="question-title">1. Quando você tenta mudar, o que normalmente acontece?</div>
+  <button class="btn" onclick="next(1)">Eu travo. Parece que algo me puxa pra trás.</button>
+  <button class="btn" onclick="next(1)">Começo animado e depois paro sem motivo.</button>
+  <button class="btn" onclick="next(1)">Fico com medo de dar errado.</button>
+</div>
+
+<div class="question" id="q2">
+  <div class="question-title">2. Como você se sente quando está sozinho?</div>
+  <button class="btn" onclick="next(2)">Minha mente não para, fico exausto.</button>
+  <button class="btn" onclick="next(2)">Me sinto vazio(a), como se faltasse algo.</button>
+  <button class="btn" onclick="next(2)">Fico ansioso(a) sem explicação.</button>
+</div>
+
+<div class="question" id="q3">
+  <div class="question-title">3. Você sente que sua mente te sabota?</div>
+  <button class="btn" onclick="next(3)">Sim. Toda vez que tento algo, ela atrapalha.</button>
+  <button class="btn" onclick="next(3)">Sim. Ela cria desculpas, medos e dúvidas.</button>
+  <button class="btn" onclick="next(3)">Sim. Parece que fui programado pra falhar.</button>
+</div>
+
+<div class="question" id="q4">
+  <div class="question-title">4. O que você mais quer agora?</div>
+  <button class="btn" onclick="next(4)">Silenciar a mente.</button>
+  <button class="btn" onclick="next(4)">Parar de sabotar tudo.</button>
+  <button class="btn" onclick="next(4)">Desbloquear meu verdadeiro eu.</button>
+</div>
+
+<div class="final" id="final">
+  Analisando suas respostas...
+  <br><br>
+  <strong>Você precisa ver isso antes que sua mente te sabote de novo.</strong>
+  <br><br>
+  <a href="https://seulink.aqui" style="background-color: var(--primary-color); color: #000; padding: 15px 30px; text-decoration: none; font-weight: bold; border-radius: 10px; display: inline-block;">CLIQUE AQUI AGORA</a>
+</div>
+
+  </div>  <script>
+    let current = 1;
+    const total = 4;
+
+    function next(n) {
+      document.getElementById(`q${n}`).classList.remove('active');
+      if (n < total) {
+        document.getElementById(`q${n + 1}`).classList.add('active');
+      } else {
+        document.getElementById('final').style.display = 'block';
+      }
+    }
+  </script></body>
+</html>
