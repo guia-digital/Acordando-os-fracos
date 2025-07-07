@@ -1,8 +1,7 @@
-<!DOCTYPE html><html lang="pt-BR">
-<head>
+<!DOCTYPE html><html lang="pt-BR"><head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Desbloqueie sua mente</title>
+  <title>Ritual do Dopamina Zero™</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -14,19 +13,55 @@
       --progress-bg: #2a2a2a;
       --progress-fill: #ff4500;
     }
-    body { margin: 0; padding: 0; font-family: 'Poppins', sans-serif; background-color: var(--bg-color); color: var(--text-color); overflow-x: hidden; }
-    .background-decor { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at top left, #1f1f1f, #0f0f0f); z-index: -1; }
-    .container { max-width: 600px; margin: 80px auto; padding: 20px; text-align: center; }
-    .progress-bar { width: 100%; background: var(--progress-bg); border-radius: 5px; overflow: hidden; height: 8px; margin-bottom: 20px; }
-    .progress-fill { width: 0%; height: 100%; background: var(--progress-fill); transition: width 0.4s ease; }
+    body {
+      margin: 0; padding: 0; font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-color); color: var(--text-color);
+      overflow-x: hidden;
+    }
+    .background-decor {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: radial-gradient(circle at top left, #1f1f1f, #0f0f0f);
+      z-index: -1;
+    }
+    .container {
+      max-width: 600px; margin: 80px auto; padding: 20px; text-align: center;
+    }
+    .progress-bar {
+      width: 100%; background: var(--progress-bg);
+      border-radius: 5px; overflow: hidden; height: 8px;
+      margin-bottom: 20px;
+    }
+    .progress-fill {
+      width: 0%; height: 100%;
+      background: var(--progress-fill);
+      transition: width 0.4s ease;
+    }
     .question { display: none; animation: fadeIn 0.5s ease-in-out; }
     .question.active { display: block; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
     .question-title { font-size: 1.5rem; margin-bottom: 30px; }
-    .btn { background-color: var(--accent-color); border: 2px solid transparent; color: var(--text-color); padding: 15px; margin: 10px 0; border-radius: 10px; cursor: pointer; width: 100%; font-size: 1rem; transition: background 0.2s, transform 0.1s; }
+    .btn {
+      background-color: var(--accent-color); border: 2px solid transparent;
+      color: var(--text-color); padding: 15px; margin: 10px 0;
+      border-radius: 10px; cursor: pointer; width: 100%; font-size: 1rem;
+      transition: background 0.2s, transform 0.1s;
+    }
     .btn:hover { background-color: var(--highlight); border-color: var(--primary-color); }
     .btn:active { transform: translateY(2px); }
-    .final { display: none; font-size: 1.2rem; padding: 40px 20px; }
+    .final {
+      display: none; font-size: 1.2rem; padding: 40px 20px;
+      background: var(--highlight); border-radius: 12px;
+    }
+    .final strong { color: var(--primary-color); }
+    .cta-btn {
+      background-color: var(--primary-color); color: #000;
+      padding: 15px 30px; text-decoration: none; font-weight: bold;
+      border-radius: 10px; display: inline-block; margin-top: 20px;
+    }
   </style>
 </head>
 <body>
@@ -34,53 +69,50 @@
   <div class="container">
     <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
     <div class="intro">
-      <h1 style="color: var(--primary-color); font-size: 2rem; margin-bottom: 20px;">Você tá se sabotando. E sabe disso.</h1>
+      <h1 style="color: var(--primary-color); font-size: 2rem; margin-bottom: 20px;">
+        Seu cérebro foi sequestrado – e a culpa não é sua.
+      </h1>
       <p style="line-height: 1.6; font-size: 1.1rem;">
-        Você tá cansado. Travado. Perdido.<br><br>
-        Rola a timeline, mas a cabeça continua uma zona.<br>
-        Você finge que tá tudo bem, mas sabe que não tá.<br><br>
-        Esse quiz vai te jogar contra a parede. Vai te mostrar por que sua vida parou.
+        Esse quiz vai expor os gatilhos invisíveis que alimentam sua ansiedade.<br><br>
+        E no final, te mostrar o caminho para reverter isso com um ritual simples de 7 minutos.
       </p>
-    </div>
+    </div><div class="question active" id="q1">
+  <div class="question-title">1. Qual dessas frases descreve melhor seu dia?</div>
+  <button class="btn" onclick="next(1, this.innerText)">Rolo feed infinito, procrastino e me culpo.</button>
+  <button class="btn" onclick="next(1, this.innerText)">Trabalho sem parar e mesmo assim sinto que estou atrasado.</button>
+  <button class="btn" onclick="next(1, this.innerText)">Nada me motiva. Tudo parece repetição.</button>
+</div>
 
-    <div class="question active" id="q1">
-      <div class="question-title">1. Quando tenta mudar, o que acontece de verdade?</div>
-      <button class="btn" onclick="next(1, this.innerText)">Eu me saboto. Faço tudo pra voltar pra zona de conforto.</button>
-      <button class="btn" onclick="next(1, this.innerText)">Eu começo e invento mil desculpas pra parar.</button>
-      <button class="btn" onclick="next(1, this.innerText)">Eu fujo. Finjo que ainda não é a hora.</button>
-    </div>
+<div class="question" id="q2">
+  <div class="question-title">2. Como você tenta “desligar a mente”?</div>
+  <button class="btn" onclick="next(2, this.innerText)">Celular, série, comida… qualquer distração serve.</button>
+  <button class="btn" onclick="next(2, this.innerText)">Evito pensar. Só sigo o dia no automático.</button>
+  <button class="btn" onclick="next(2, this.innerText)">Fico rolando entre tarefas e redes sem parar.</button>
+</div>
 
-    <div class="question" id="q2">
-      <div class="question-title">2. Quando tá sozinho, o que rola na sua mente?</div>
-      <button class="btn" onclick="next(2, this.innerText)">Um turbilhão de merda que eu tento calar com redes sociais.</button>
-      <button class="btn" onclick="next(2, this.innerText)">Sinto um vazio que nem sei explicar.</button>
-      <button class="btn" onclick="next(2, this.innerText)">Fico ansioso, como se estivesse atrasado pra algo que nem existe.</button>
-    </div>
+<div class="question" id="q3">
+  <div class="question-title">3. Você sente que sua mente te sabota?</div>
+  <button class="btn" onclick="next(3, this.innerText)">Sim. Ela me convence a desistir de tudo que começo.</button>
+  <button class="btn" onclick="next(3, this.innerText)">Sim. Parece que ela quer que eu viva preso.</button>
+  <button class="btn" onclick="next(3, this.innerText)">Sim. Tudo que me faz bem, eu abandono rápido.</button>
+</div>
 
-    <div class="question" id="q3">
-      <div class="question-title">3. Sua mente é uma aliada ou um inimigo?</div>
-      <button class="btn" onclick="next(3, this.innerText)">Inimigo total. Me trava toda vez que quero evoluir.</button>
-      <button class="btn" onclick="next(3, this.innerText)">Ela me sabota sorrindo. Me convence que tá tudo bem em ficar na merda.</button>
-      <button class="btn" onclick="next(3, this.innerText)">É como se eu tivesse sido programado pra fracassar.</button>
-    </div>
+<div class="question" id="q4">
+  <div class="question-title">4. E se você pudesse reverter isso agora?</div>
+  <button class="btn" onclick="next(4, this.innerText)">Quero uma forma simples de voltar ao controle.</button>
+  <button class="btn" onclick="next(4, this.innerText)">Quero silenciar essa ansiedade que me trava.</button>
+  <button class="btn" onclick="next(4, this.innerText)">Quero sair do ciclo vício-culpa-vício.</button>
+</div>
 
-    <div class="question" id="q4">
-      <div class="question-title">4. O que você mais quer agora, mas não consegue alcançar?</div>
-      <button class="btn" onclick="next(4, this.innerText)">Silenciar essa porra de mente acelerada.</button>
-      <button class="btn" onclick="next(4, this.innerText)">Parar de repetir sempre os mesmos erros.</button>
-      <button class="btn" onclick="next(4, this.innerText)">Sair desse ciclo de autossabotagem antes que vire minha identidade.</button>
-    </div>
+<div class="final" id="final">
+  <p>Você foi condicionado. Estímulo fácil → prazer → ansiedade. Isso está te destruindo sem você perceber.</p>
+  <p><strong>Marcos, 28 anos</strong>, usou o <strong>Ritual do Dopamina Zero™</strong> e em 21 dias voltou a dormir, a produzir, a respirar.</p>
+  <p>Esse protocolo já tirou mais de 1.000 pessoas do modo sabotagem. E está disponível pra você agora.</p>
+  <p><em>Mas talvez não por muito tempo. Se quiser o controle de volta, comece agora.</em></p>
+  <a href="https://seulink.aqui" class="cta-btn">Quero o Ritual do Dopamina Zero™ agora</a>
+</div>
 
-    <div class="final" id="final">
-      <p>Tá claro: você tá preso. E vai continuar assim se não fizer algo radical.</p>
-      <p><strong>Marcos, 28 anos, também achava que era só preguiça. Quando viu isso aqui, quase fechou a aba. Ainda bem que não fechou. Em 21 dias, tava no controle de novo.</strong></p>
-      <p><strong>Esse método já quebrou a rotina de merda de centenas de pessoas.</strong></p>
-      <p><em>Essa página pode sair do ar a qualquer momento se o criador do método encerrar as inscrições. Decide agora ou aceita viver de replay mental.</em></p>
-      <a href="https://seulink.aqui" id="cta" style="background-color: var(--primary-color); color: #000; padding: 15px 30px; text-decoration: none; font-weight: bold; border-radius: 10px; display: inline-block; margin-top: 20px;">Me dá essa porra antes que eu desista de novo</a>
-    </div>
-  </div>
-
-  <script>
+  </div>  <script>
     let current = 1;
     const total = 4;
 
@@ -97,6 +129,5 @@
         console.log("Usuário chegou ao final.");
       }
     }
-  </script>
-</body>
+  </script></body>
 </html>
